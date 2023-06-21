@@ -3,7 +3,7 @@ class adminarea extends connect
 {
     private $queryPost = 'INSERT INTO admin_area(id,id_area,id_staff,id_position,id_journeys) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM admin_area';
-    private $queryUpdate = 'UPDATE admin_area SET id = :id_area, id_staff = :id_position, id_journeys = :identificacion, idarea = :idstaff, idposicion = :idjpurneys  WHERE n_bill = :billete';
+    private $queryUpdate = 'UPDATE admin_area SET id = :id_area, id_staff = :id_position, id_journeys = :identificacion, idarea = :idstaff, idposicion = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM admin_area WHERE id = :id_area';
     private $message;
     use getInstance;

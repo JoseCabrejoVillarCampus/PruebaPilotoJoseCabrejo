@@ -3,7 +3,7 @@ class areas extends connect
 {
     private $queryPost = 'INSERT INTO areas(id) VALUES(:identificacion)';
     private $queryGetAll = 'SELECT * FROM areas';
-    private $queryUpdate = 'UPDATE areas SET id = :identificacion  WHERE id = :id_areas';
+    private $queryUpdate = 'UPDATE areas SET id = :identificacion  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM areas WHERE id = :identificacion';
     private $message;
     use getInstance;

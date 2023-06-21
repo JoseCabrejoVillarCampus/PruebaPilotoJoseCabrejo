@@ -3,7 +3,7 @@ class academicarea extends connect
 {
     private $queryPost = 'INSERT INTO academic_area(id,id_area,id_staff,id_position,id_journeys) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM academic_area';
-    private $queryUpdate = 'UPDATE academic_area SET id = :id_area, id_staff = :id_position, id_journeys = :identificacion, idarea = :idstaff, idposicion = :idjpurneys  WHERE n_bill = :billete';
+    private $queryUpdate = 'UPDATE academic_area SET id = :id_area, id_staff = :id_position, id_journeys = :identificacion, idarea = :idstaff, idposicion = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM academic_area WHERE id = :id_area';
     private $message;
     use getInstance;
