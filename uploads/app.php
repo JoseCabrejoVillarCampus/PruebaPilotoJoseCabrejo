@@ -24,6 +24,7 @@ function autoload($class)
         dirname(__DIR__) . '/scripts/areas/',
         dirname(__DIR__) . '/scripts/campers/',
         dirname(__DIR__) . '/scripts/chapters/',
+        dirname(__DIR__) . '/scripts/contact_info/',   
         dirname(__DIR__) . '/scripts/db/'
     ];
     // Convertir el nombre de la clase en un nombre de archivo relativo
