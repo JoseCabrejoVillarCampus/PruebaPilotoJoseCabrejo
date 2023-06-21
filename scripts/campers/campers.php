@@ -11,7 +11,7 @@ class campers extends connect
     {
         parent::__construct();
     }
-    public function postAdminArea()
+    public function postCamper()
     {
         try {
             $res = $this->conx->prepare($this->queryPost);
@@ -32,7 +32,7 @@ class campers extends connect
             print_r($this->message);
         }
     }
-    public function getAllAdminArea()
+    public function getAllCamper()
     {
         try {
             $res = $this->conx->prepare($this->queryGetAll);
@@ -53,7 +53,7 @@ class campers extends connect
             print_r($this->message);
         }
     }
-    public function putAdminArea()
+    public function putCamper()
     {
 
         try {
@@ -80,7 +80,7 @@ class campers extends connect
             print_r($this->message);
         }
     }
-    public function deleteAdminArea()
+    public function deleteCamper()
     {
         try {
             $res = $this->conx->prepare($this->queryDelete);
