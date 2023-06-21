@@ -1,13 +1,13 @@
 <?php
 class areas extends connect
 {
-    private $queryPost = 'INSERT INTO areas(id) VALUES(:identificacion)';
+    private $queryPost = 'INSERT INTO areas(id,name_area) VALUES(:identificacion,:narea)';
     private $queryGetAll = 'SELECT * FROM areas';
-    private $queryUpdate = 'UPDATE areas SET id = :identificacion  WHERE id = :identificacion';
+    private $queryUpdate = 'UPDATE areas SET id = :identificacion, name_area = :narea  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM areas WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1)
+    function __construct(public $id=1, public $name_area=1)
     {
         parent::__construct();
     }
@@ -16,6 +16,7 @@ class areas extends connect
         try {
             $res = $this->conx->prepare($this->queryPost);
             $res->bindValue("identificacion", $this->id);
+            $res->bindValue("narea",$this->name_area);
             $res->execute();
             $this->message = ["Code" => 200 + $res->rowCount(), "Message" => "inserted data"];
         } catch (\PDOException $e) {
@@ -24,12 +25,13 @@ class areas extends connect
             print_r($this->message);
         }
     }
-    public function getAllAdminArea()
+    public function getAllAreas()
     {
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
             $res->bindValue("identificacion", $this->id);
+            $res->bindValue("narea",$this->name_area);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];
@@ -43,6 +45,7 @@ class areas extends connect
         try {
             $res = $this->conx->prepare($this->queryUpdate);
             $res->bindValue("identificacion", $this->id);
+            $res->bindValue("narea",$this->name_area);
             $res->execute();
 
             if ($res->rowCount() > 0) {
@@ -61,6 +64,7 @@ class areas extends connect
         try {
             $res = $this->conx->prepare($this->queryDelete);
             $res->bindValue("identificacion", $this->id);
+            $res->bindValue("narea",$this->name_area);
             $res->execute();
             $this->message = ["Code" => 200, "Message" => "Data delete"];
         } catch (\PDOException $e) {

@@ -40,6 +40,6 @@ function autoload($class)
 }
 spl_autoload_register('autoload');
 
-client::getInstance(json_decode(file_get_contents("php://input"), true))->getAllClient();
+areas::getInstance(json_decode(file_get_contents("php://input"), true))->getAllAreas();
 
 ?>
