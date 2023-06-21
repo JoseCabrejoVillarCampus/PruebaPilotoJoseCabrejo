@@ -18,16 +18,15 @@ trait getInstance
 function autoload($class)
 {
     // Directorios donde buscar archivos de clases
-    $directories = [
-        dirname(__DIR__) . '/scripts/academic_area/',
-        dirname(__DIR__) . '/scripts/admin_area/',
-        dirname(__DIR__) . '/scripts/areas/',
-        dirname(__DIR__) . '/scripts/campers/',
-        dirname(__DIR__) . '/scripts/chapters/',
-        dirname(__DIR__) . '/scripts/contact_info/',
-        dirname(__DIR__) . '/scripts/countries/',   
-        dirname(__DIR__) . '/scripts/db/'
-    ];
+    $directories = array();
+    $directorio = dirname(__DIR__) . '/scripts';
+    $elementos = scandir($directorio);
+    foreach ($elementos as $elemento) {
+        $rutaElemento = $directorio.'/'.$elemento.'/';
+        if(is_dir($rutaElemento)&& $elemento != '.' && $elemento != '..'){
+            $directories[]=$rutaElemento;
+        }
+    }
     // Convertir el nombre de la clase en un nombre de archivo relativo
     $classFile = str_replace('\\', '/', $class) . '.php';
 
