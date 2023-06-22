@@ -1,5 +1,5 @@
 <?php
-class optionaltopics extends connect
+class optional_topics extends connect
 {
     private $queryPost = 'INSERT INTO optional_topics(id,id_topic,id_team,id_subject,id_camper,id_team_educator) VALUES(:identificacion,:topic,:team,:subject,:camper,:teameducator)';
     private $queryGetAll = 'SELECT * FROM optional_topics';

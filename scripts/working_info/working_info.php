@@ -1,5 +1,5 @@
 <?php
-class workinginfo extends connect
+class working_info extends connect
 {
     private $queryPost = 'INSERT INTO working_info(id,id_staff,years_exp,months_exp, id_work_reference,id_personal_ref,start_contract,end_contract) VALUES(:identificacion,:idstaff,:yearsexp,:monthsexp, :idworkreference,:idpersonal,:startcontract,:endcontract)';
     private $queryGetAll = 'SELECT * FROM working_info';

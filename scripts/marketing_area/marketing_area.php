@@ -1,5 +1,5 @@
 <?php
-class marketingarea extends connect
+class marketing_area extends connect
 {
     private $queryPost = 'INSERT INTO marketing_area(id,id_area,id_staff,id_position,id_journey) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM marketing_area';
@@ -33,8 +33,8 @@ class marketingarea extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindColumn("id_area", 3);
-            $res->bindColumn("id_position", 1);
+            $res->bindValue("id_area", 3);
+            $res->bindValue("id_position", 1);
             $res->bindValue("identificacion", 1);
             $res->bindValue("idstaff", 1);
             $res->bindValue("idjpurneys", 1);

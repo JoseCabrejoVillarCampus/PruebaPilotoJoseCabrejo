@@ -1,5 +1,5 @@
 <?php
-class workreference extends connect
+class work_reference extends connect
 {
     private $queryPost = 'INSERT INTO work_reference(id,full_name,cel_number, position, company) VALUES(:identificacion,:name,:phone,:ocupacion, :comp)';
     private $queryGetAll = 'SELECT * FROM work_reference';

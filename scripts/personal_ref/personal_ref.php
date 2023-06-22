@@ -1,5 +1,5 @@
 <?php
-class personalref extends connect
+class personal_ref extends connect
 {
     private $queryPost = 'INSERT INTO personal_ref(id,full_name,cel_number,relationship,occupation) VALUES(:identificacion,:name,:phone,:relacion,:ocupacion)';
     private $queryGetAll = 'SELECT * FROM personal_ref';

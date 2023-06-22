@@ -1,5 +1,5 @@
 <?php
-class maintarea extends connect
+class maint_area extends connect
 {
     private $queryPost = 'INSERT INTO maint_area(id,id_area,id_staff,id_position,id_journey) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM maint_area';

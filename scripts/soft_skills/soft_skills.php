@@ -2,7 +2,7 @@
 class softskills extends connect
 {
     private $queryPost = 'INSERT INTO soft_skills(id,id_team_schedule,id_journey,id_trainer,id_location,id_subject) VALUES(:identificacion,:idteam,:idjpurneys,:idtrainer,:location,:subject)';
-    private $queryGetAll = 'SELECT * FROM soft_skills';
+    private $queryGetAll = 'SELECT soft_skills.id, team_schedules.name AS team_schedule_name, journeys.name AS journey_name, trainers.name AS trainer_name, locations.name AS location_name, subjects.name AS subject_name FROM soft_skills INNER JOIN team_schedules ON soft_skills.id_team_schedule = team_schedules.id INNER JOIN journeys ON soft_skills.id_journey = journeys.id INNER JOIN trainers ON soft_skills.id_trainer = trainers.id INNER JOIN locations ON soft_skills.id_location = locations.id INNER JOIN subjects ON soft_skills.id_subject = subjects.id WHERE softskills.id=:identification ';
     private $queryUpdate = 'UPDATE soft_skills SET id = :identificacion, id_team_schedule = :idteam, id_journey = :idjpurneys,id_trainer = :idtrainer, id_location = :location, id_subject = :subject  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM soft_skills WHERE id = :identificacion';
     private $message;

@@ -1,5 +1,5 @@
 <?php
-class thematicunits extends connect
+class thematic_units extends connect
 {
     private $queryPost = 'INSERT INTO thematic_units(id,id_route,name_thematics_units,start_date,end_date,description,duration_days) VALUES(:identificacion,:idroute,:namethemunit,:startdate,:enddate,:descript,:days)';
     private $queryGetAll = 'SELECT * FROM thematic_units';

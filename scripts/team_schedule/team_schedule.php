@@ -1,5 +1,5 @@
 <?php
-class teamschedule extends connect
+class team_schedule extends connect
 {
     private $queryPost = 'INSERT INTO team_schedule(id,team_name,check_in_skills,check_out_skills,check_in_soft,check_out_soft,check_in_english,check_out_english,check_in_review,check_out_review,id_journey) VALUES(:identificacion,:teamname,:checkinskills,:checkoutskills,:checkinsoft,:checkoutsoft,:checkinemglish,:checkoutenglish,:checkinreview,:checkoutreview,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM team_schedule';

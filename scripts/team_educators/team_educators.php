@@ -1,5 +1,5 @@
 <?php
-class teameducators extends connect
+class team_educators extends connect
 {
     private $queryPost = 'INSERT INTO team_educators(id,name_rol) VALUES(:identificacion,:namerol)';
     private $queryGetAll = 'SELECT * FROM team_educators';
