@@ -7,7 +7,7 @@ class journey extends connect
     private $queryDelete = 'DELETE FROM journey WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1, private $name_journey=1, public $check_in=1, public $check_out=1)
+    function __construct(private $id=1, public $name_journey=1, private $check_in=1, private $check_out=1)
     {
         parent::__construct();
     }
@@ -32,10 +32,10 @@ class journey extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("name",$this->name_journey);
-            $res->bindValue("checkin", $this->check_in);
-            $res->bindValue("checkout",$this->check_out);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("name", 1);
+            $res->bindValue("checkin", 1);
+            $res->bindValue("checkout", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

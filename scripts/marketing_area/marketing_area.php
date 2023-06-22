@@ -4,10 +4,10 @@ class marketingarea extends connect
     private $queryPost = 'INSERT INTO marketing_area(id,id_area,id_staff,id_position,id_journey) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM marketing_area';
     private $queryUpdate = 'UPDATE marketing_area SET id = :identificacion, id_area = :idarea, id_staff = :idstaff, id_position = :idposicion, id_journey = :idjpurneys  WHERE id = :identificacion';
-    private $queryDelete = 'DELETE FROM marketing_area WHERE id = :id_area';
+    private $queryDelete = 'DELETE FROM marketing_area WHERE id = :informacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1, public $id_area=1, private $id_staff=1, private $id_position=1, private $id_journey=1)
+    function __construct(private $id=1, private $id_area=1, private $id_staff=1, private $id_position=1, private $id_journey=1)
     {
         parent::__construct();
     }

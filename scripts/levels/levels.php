@@ -31,9 +31,9 @@ class levels extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("name",$this->name_level);
-            $res->bindValue("group", $this->group_level);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("name", 1);
+            $res->bindValue("group", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

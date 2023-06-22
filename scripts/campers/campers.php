@@ -7,7 +7,7 @@ class campers extends connect
     private $queryDelete = 'DELETE FROM campers WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id = 1, public $id_team_schedule = 1, private $id_route = 1, private $id_trainer = 1, private $id_psycologist = 1, private $id_teacher = 1,private $id_level = 1, private $id_journey = 1, private $id_staff = 1)
+    function __construct(private $id = 1, private $id_team_schedule = 1, private $id_route = 1, private $id_trainer = 1, private $id_psycologist = 1, private $id_teacher = 1,private $id_level = 1, private $id_journey = 1, private $id_staff = 1)
     {
         parent::__construct();
     }
@@ -37,15 +37,15 @@ class campers extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("idteam", $this->id_team_schedule);
-            $res->bindValue("idrout", $this->id_route);
-            $res->bindValue("idtrainer", $this->id_trainer);
-            $res->bindValue("idpsy", $this->id_psycologist);
-            $res->bindValue("idteacher", $this->id_teacher);
-            $res->bindValue("idlvl", $this->id_level);
-            $res->bindValue("idjourney", $this->id_journey);
-            $res->bindValue("idstaff", $this->id_staff);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("idteam", 1);
+            $res->bindValue("idrout", 1);
+            $res->bindValue("idtrainer", 1);
+            $res->bindValue("idpsy", 1);
+            $res->bindValue("idteacher", 1);
+            $res->bindValue("idlvl", 1);
+            $res->bindValue("idjourney", 1);
+            $res->bindValue("idstaff", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

@@ -36,14 +36,14 @@ class contact_info extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("idstaff", $this->id_staff);
-            $res->bindValue("whats", $this->whatsapp);
-            $res->bindValue("inst", $this->instagram);
-            $res->bindValue("link", $this->linkedin);
-            $res->bindValue("email", $this->email);
-            $res->bindValue("dir", $this->address);
-            $res->bindValue("phon", $this->cel_number);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("idstaff", 1);
+            $res->bindValue("whats", 1);
+            $res->bindValue("inst", 1);
+            $res->bindValue("link", 1);
+            $res->bindValue("email", 1);
+            $res->bindValue("dir", 1);
+            $res->bindValue("phon", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

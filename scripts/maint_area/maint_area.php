@@ -3,11 +3,11 @@ class maintarea extends connect
 {
     private $queryPost = 'INSERT INTO maint_area(id,id_area,id_staff,id_position,id_journey) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
     private $queryGetAll = 'SELECT * FROM maint_area';
-    private $queryUpdate = 'UPDATE maint_area SET id = :id_area, id_staff = :id_position, id_journey = :identificacion, idarea = :idstaff, idposicion = :idjpurneys  WHERE id = :identificacion';
-    private $queryDelete = 'DELETE FROM maint_area WHERE id = :id_area';
+    private $queryUpdate = 'UPDATE maint_area SET id = :identificacion, id_area = :idarea, id_staff = :idstaff, id_position = :idposicion, id_journey = :idjpurneys  WHERE id = :identificacion';
+    private $queryDelete = 'DELETE FROM maint_area WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1, public $id_area=1, private $id_staff=1, private $id_position=1, private $id_journey=1)
+    function __construct(private $id=1, private $id_area=1, private $id_staff=1, private $id_position=1, private $id_journey=1)
     {
         parent::__construct();
     }
@@ -15,10 +15,10 @@ class maintarea extends connect
     {
         try {
             $res = $this->conx->prepare($this->queryPost);
-            $res->bindValue("id_area", $this->id);
-            $res->bindValue("id_position", $this->id_area);
-            $res->bindValue("identificacion", $this->id_staff);
-            $res->bindValue("idstaff", $this->id_position);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idarea", $this->id_area);
+            $res->bindValue("idstaff", $this->id_staff);
+            $res->bindValue("idposicion", $this->id_position);
             $res->bindValue("idjpurneys", $this->id_journey);
             $res->execute();
             $this->message = ["Code" => 200 + $res->rowCount(), "Message" => "inserted data"];
@@ -33,10 +33,10 @@ class maintarea extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindColumn("id_area", 3);
-            $res->bindColumn("id_position", 1);
-            $res->bindValue("identificacion", 1);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("idarea", 1);
             $res->bindValue("idstaff", 1);
+            $res->bindValue("idposicion", 1);
             $res->bindValue("idjpurneys", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
@@ -50,10 +50,10 @@ class maintarea extends connect
 
         try {
             $res = $this->conx->prepare($this->queryUpdate);
-            $res->bindValue("id_area", $this->id);
-            $res->bindValue("id_position", $this->id_area);
-            $res->bindValue("identificacion", $this->id_staff);
-            $res->bindValue("idstaff", $this->id_position);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idarea", $this->id_area);
+            $res->bindValue("idstaff", $this->id_staff);
+            $res->bindValue("idposicion", $this->id_position);
             $res->bindValue("idjpurneys", $this->id_journey);
             $res->execute();
 
@@ -72,10 +72,10 @@ class maintarea extends connect
     {
         try {
             $res = $this->conx->prepare($this->queryDelete);
-            $res->bindValue("id_area", $this->id);
-            $res->bindValue("id_position", $this->id_area);
-            $res->bindValue("identificacion", $this->id_staff);
-            $res->bindValue("idstaff", $this->id_position);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idarea", $this->id_area);
+            $res->bindValue("idstaff", $this->id_staff);
+            $res->bindValue("idposicion", $this->id_position);
             $res->bindValue("idjpurneys", $this->id_journey);
             $res->execute();
             $this->message = ["Code" => 200, "Message" => "Data delete"];

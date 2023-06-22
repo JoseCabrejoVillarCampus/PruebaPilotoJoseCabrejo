@@ -7,7 +7,7 @@ class emergency_contact extends connect
     private $queryDelete = 'DELETE FROM emergency_contact WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1, private $id_staff=1, public $cel_number=1, public $relationship=1, public $full_name=1, public $email=1)
+    function __construct(private $id=1, private $id_staff=1, public $cel_number=1, public $relationship=1, public $full_name=1, public $email=1)
     {
         parent::__construct();
     }
@@ -34,12 +34,12 @@ class emergency_contact extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("staff",$this->id_staff);
-            $res->bindValue("phone", $this->cel_number);
-            $res->bindValue("relation",$this->relationship);
-            $res->bindValue("name", $this->full_name);
-            $res->bindValue("mail",$this->email);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("staff", 1);
+            $res->bindValue("phone", 1);
+            $res->bindValue("relation",1);
+            $res->bindValue("name", 1);
+            $res->bindValue("mail",1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

@@ -7,7 +7,7 @@ class countries extends connect
     private $queryDelete = 'DELETE FROM countries WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id=1, public $name_country=1)
+    function __construct(private $id=1, public $name_country=1)
     {
         parent::__construct();
     }
@@ -30,8 +30,8 @@ class countries extends connect
         try {
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
-            $res->bindValue("identificacion", $this->id);
-            $res->bindValue("country",$this->name_country);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("country",1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];

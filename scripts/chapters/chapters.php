@@ -7,7 +7,7 @@ class chapters extends connect
     private $queryDelete = 'DELETE FROM chapters WHERE id = :identificacion';
     private $message;
     use getInstance;
-    function __construct(public $id = 1, public $id_thematic_units = 1, private $name_chapter = 1, private $start_date = 1, private $end_date = 1, private $description = 1,private $duration_days = 1)
+    function __construct(private $id = 1, private $id_thematic_units = 1, public $name_chapter = 1, public $start_date = 1, public $end_date = 1, public $description = 1, public $duration_days = 1)
     {
         parent::__construct();
     }
@@ -15,13 +15,13 @@ class chapters extends connect
     {
         try {
             $res = $this->conx->prepare($this->queryPost);
-            $res->bindValue("id", $this->id);
-            $res->bindValue("id_thematic_units", $this->id_team_schedule);
-            $res->bindValue("name_chapter", $this->id_route);
-            $res->bindValue("start_date", $this->id_trainer);
-            $res->bindValue("end_date", $this->id_psycologist);
-            $res->bindValue("description", $this->id_teacher);
-            $res->bindValue("duration_days", $this->id_level);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idthem", $this->id_thematic_units);
+            $res->bindValue("namechap", $this->name_chapter);
+            $res->bindValue("startdate", $this->start_date);
+            $res->bindValue("enddate", $this->end_date);
+            $res->bindValue("descript", $this->description);
+            $res->bindValue("days", $this->duration_days);
             $res->execute();
             $this->message = ["Code" => 200 + $res->rowCount(), "Message" => "inserted data"];
         } catch (\PDOException $e) {
@@ -36,13 +36,13 @@ class chapters extends connect
             $res = $this->conx->prepare($this->queryGetAll);
             $res->execute();
             $res = $this->conx->prepare($this->queryPost);
-            $res->bindValue("id", $this->id);
-            $res->bindValue("id_thematic_units", $this->id_team_schedule);
-            $res->bindValue("name_chapter", $this->id_route);
-            $res->bindValue("start_date", $this->id_trainer);
-            $res->bindValue("end_date", $this->id_psycologist);
-            $res->bindValue("description", $this->id_teacher);
-            $res->bindValue("duration_days", $this->id_level);
+            $res->bindValue("identificacion", 3);
+            $res->bindValue("idthem", 1);
+            $res->bindValue("namechap", 1);
+            $res->bindValue("startdate", 1);
+            $res->bindValue("enddate", 1);
+            $res->bindValue("descript", 1);
+            $res->bindValue("days", 1);
             $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];
@@ -56,13 +56,13 @@ class chapters extends connect
         try {
             $res = $this->conx->prepare($this->queryUpdate);
             $res = $this->conx->prepare($this->queryPost);
-            $res->bindValue("id", $this->id);
-            $res->bindValue("id_thematic_units", $this->id_team_schedule);
-            $res->bindValue("name_chapter", $this->id_route);
-            $res->bindValue("start_date", $this->id_trainer);
-            $res->bindValue("end_date", $this->id_psycologist);
-            $res->bindValue("description", $this->id_teacher);
-            $res->bindValue("duration_days", $this->id_level);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idthem", $this->id_thematic_units);
+            $res->bindValue("namechap", $this->name_chapter);
+            $res->bindValue("startdate", $this->start_date);
+            $res->bindValue("enddate", $this->end_date);
+            $res->bindValue("descript", $this->description);
+            $res->bindValue("days", $this->duration_days);
             $res->execute();
 
             if ($res->rowCount() > 0) {
@@ -81,13 +81,13 @@ class chapters extends connect
         try {
             $res = $this->conx->prepare($this->queryDelete);
             $res = $this->conx->prepare($this->queryPost);
-            $res->bindValue("id", $this->id);
-            $res->bindValue("id_thematic_units", $this->id_team_schedule);
-            $res->bindValue("name_chapter", $this->id_route);
-            $res->bindValue("start_date", $this->id_trainer);
-            $res->bindValue("end_date", $this->id_psycologist);
-            $res->bindValue("description", $this->id_teacher);
-            $res->bindValue("duration_days", $this->id_level);
+            $res->bindValue("identificacion", $this->id);
+            $res->bindValue("idthem", $this->id_thematic_units);
+            $res->bindValue("namechap", $this->name_chapter);
+            $res->bindValue("startdate", $this->start_date);
+            $res->bindValue("enddate", $this->end_date);
+            $res->bindValue("descript", $this->description);
+            $res->bindValue("days", $this->duration_days);
             $res->execute();
             $this->message = ["Code" => 200, "Message" => "Data delete"];
         } catch (\PDOException $e) {
