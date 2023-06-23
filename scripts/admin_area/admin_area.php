@@ -2,7 +2,7 @@
 class admin_area extends connect
 {
     private $queryPost = 'INSERT INTO admin_area(id,id_area,id_staff,id_position,id_journeys) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
-    private $queryGetAll = 'SELECT * FROM admin_area';
+    private $queryGetAll = 'SELECT admin_area.id, areas.name AS areas_name, staff.name AS staff_name, position.name AS position_name, journeys.name AS journeys_name FROM admin_area, INNER JOIN areas ON admin_area.id_area = areas.id INNER JOIN staff ON admin_area.id_staff = staff.id INNER JOIN position ON admin_area.id_position = position.id INNER JOIN journeys ON admin_area.id_journeys = journeys.id  WHERE admin_area.id=:identification ';
     private $queryUpdate = 'UPDATE admin_area SET id = :identificacion, id_area = :idarea, id_staff = :idstaff, id_position = :idposicion, id_journeys = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM admin_area WHERE id = :identificacion';
     private $message;

@@ -2,7 +2,7 @@
 class chapters extends connect
 {
     private $queryPost = 'INSERT INTO chapters(id,id_thematic_units,name_chapter,start_date,end_date,description,duration_days) VALUES(:identificacion,:idthem,:namechap,:startdate,:enddate,:descript,:days)';
-    private $queryGetAll = 'SELECT * FROM chapters';
+    private $queryGetAll = 'SELECT chapters.id, thematic_units.name AS thematic_units_name FROM chapters, INNER JOIN thematic_units ON chapters.id_thematic_units = thematic_units.id  WHERE chapters.id=:identification ';
     private $queryUpdate = 'UPDATE chapters SET id = :identificacion, id_thematic_units = :idthem, name_chapter = :namechap, start_date = :startdate, end_date = :enddate, description = :descript, duration_days =:days  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM chapters WHERE id = :identificacion';
     private $message;

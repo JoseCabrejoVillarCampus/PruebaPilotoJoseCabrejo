@@ -2,7 +2,7 @@
 class academic_area extends connect
 {
     private $queryPost = 'INSERT INTO academic_area(id,id_area,id_staff,id_position,id_journeys) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
-    private $queryGetAll = 'SELECT * FROM academic_area';
+    private $queryGetAll = 'SELECT academic_area.id, areas.name AS areas_name, staff.name AS staff_name, position.name AS position_name, journeys.name AS journeys_name FROM academic_area, INNER JOIN areas ON academic_area.id_areas = areas.id INNER JOIN staff ON academic_area.id_staff = staff.id INNER JOIN position ON academic_area.id_position = position.id INNER JOIN journeys ON academic_area.id_journeys = journeys.id  WHERE academic_area.id=:identification ';
     private $queryUpdate = 'UPDATE academic_area SET id = :identificacion, id_area = :idarea, id_staff = :idstaff, id_position = :idposicion, id_journeys = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM academic_area WHERE id = :identificacion';
     private $message;

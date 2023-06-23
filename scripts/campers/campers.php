@@ -2,7 +2,7 @@
 class campers extends connect
 {
     private $queryPost = 'INSERT INTO campers(id,id_team_schedule,id_route,id_trainer,id_psycologist,id_teacher,id_level,id_journey,id_staff) VALUES(:identificacion,:idteam,:idrout,:idtrainer,:idpsy,:idteacher, :idlvl, :idjourney, :idstaff)';
-    private $queryGetAll = 'SELECT * FROM campers';
+    private $queryGetAll = 'SELECT campers.id, team_schedules.name AS team_schedule_name, routes.name AS routes_name, trainers.name AS trainers_name, psychologist.name AS psychologist_name, teachers.name AS teachers_name, levels.name AS levels_name, journeys.name AS journeyss_name FROM campers, INNER JOIN team_schedules ON campers.id_team_schedule = team_schedules.id INNER JOIN routes ON campers.id_route = route.id INNER JOIN trainers ON campers.id_trainer = trainers.id INNER JOIN psychologist ON campers.id_psycologist = psychologist.id INNER JOIN teachers ON campers.id_teacher = teacher.id INNER JOIN levels ON campers.id_level = level.id INNER JOIN journeys ON campers.id_journey = journey.id INNER JOIN staff ON campers.id_staff = staff.id WHERE campers.id=:identification ';
     private $queryUpdate = 'UPDATE campers SET id = :identificacion, id_team_schedule = :idteam, id_route = :idrout, id_trainer = :idtrainer, id_psycologist = :idpsy, id_teacher = :idteacher, id_level =:idlvl, id_journey =:idjourney, id_staff=:idstaff  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM campers WHERE id = :identificacion';
     private $message;
