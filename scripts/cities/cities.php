@@ -2,7 +2,7 @@
 class cities extends connect
 {
     private $queryPost = 'INSERT INTO cities(id,name_city,id_region) VALUES(:identificacion,:namecity,:idreg)';
-    private $queryGetAll = 'SELECT * FROM cities';
+    private $queryGetAll = 'SELECT cities.id, region.name AS region_name FROM cities, INNER JOIN regions ON cities.id_region = region.id  WHERE cities.id=:identification ';
     private $queryUpdate = 'UPDATE cities SET id = :identificacion, name_city = :namecity, id_region = :idreg  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM cities WHERE id = :identificacion';
     private $message;

@@ -2,7 +2,7 @@
 class contact_info extends connect
 {
     private $queryPost = 'INSERT INTO contact_info(id,id_staff,whatsapp,instagram,linkedin,email,address,cel_number) VALUES(:identificacion,:idstaff,:whats,:inst,:link,:email, :dir, :phon)';
-    private $queryGetAll = 'SELECT * FROM contact_info';
+    private $queryGetAll = 'SELECT contact_info.id, staff.name AS staff_name FROM contact_info, INNER JOIN staff ON contact_info.id_staff = staff.id  WHERE contact_info.id=:identification ';
     private $queryUpdate = 'UPDATE contact_info SET id = :identificacion, id_staff = :idstaff, whatsapp = :whats, instagram = :inst, linkedin = :link, email = :email, address =:dir, cel_number =:phon  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM contact_info WHERE id = :identificacion';
     private $message;

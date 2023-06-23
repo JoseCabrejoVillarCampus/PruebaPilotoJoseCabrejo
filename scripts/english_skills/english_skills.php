@@ -2,7 +2,7 @@
 class english_skills extends connect
 {
     private $queryPost = 'INSERT INTO english_skills(id,id_team_schedule,id_journey,id_teacher,id_location,id_subject) VALUES(:identificacion,:team,:journey,:teacher,:location,:subject)';
-    private $queryGetAll = 'SELECT * FROM english_skills';
+    private $queryGetAll = 'SELECT english_skills.id, team_schedule.name AS team_schedule_name, journeys.name AS journey_name, teachers.name AS teachers_name, locations.name AS location_name, subjects.name AS subject_name FROM english_skills, INNER JOIN team_schedules ON english_skills.id_team_schedule = team_schedules.id INNER JOIN journeys ON english_skills.id_journey = journeys.id INNER JOIN teachers ON english_skills.id_teacher = teachers.id INNER JOIN locations ON english_skills.id_location = locations.id INNER JOIN subjects ON english_skills.id_subject = subjects.id WHERE english_skills.id=:identification ';
     private $queryUpdate = 'UPDATE english_skills SET id = :identificacion, id_team_schedule = :team, id_journey = :journey, id_teacher = :teacher, id_location = :location, id_subject = :subject  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM english_skills WHERE id = :identificacion';
     private $message;
