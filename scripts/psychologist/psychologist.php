@@ -2,7 +2,7 @@
 class psychologist extends connect
 {
     private $queryPost = 'INSERT INTO psychologist(id,id_staff,id_route,id_academic_area_psycologist,id_position,id_team_educator) VALUES(:identificacion,:idstaff,:idrout,:areapsyco,:posicion,:teameducator)';
-    private $queryGetAll = 'SELECT * FROM psychologist';
+    private $queryGetAll = 'SELECT psychologist.id, staff.name AS staff_name, routes.name AS routes_name, academic_area.name AS academic_area_name, position.name AS position_name, team_educators.name AS team_educators_name FROM psychologist, INNER JOIN satff ON psychologist.id_staff = staff.id INNER JOIN routes ON psychologist.id_route = route.id INNER JOIN academic_area ON psychologist.id_academic_area_psycologist = academic_area_psycologist.id INNER JOIN position ON psychologist.id_position = position.id INNER JOIN team_educators ON psychologist.id_team_educators = team_educators.id WHERE psychologist.id=:identification ';
     private $queryUpdate = 'UPDATE psychologist SET id = :identificacion, id_staff = :idstaff, id_route = :idrout,id_academic_area_psycologist = :areapsyco, id_position = :posicion, id_team_educator = :teameducator  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM psychologist WHERE id = :identificacion';
     private $message;

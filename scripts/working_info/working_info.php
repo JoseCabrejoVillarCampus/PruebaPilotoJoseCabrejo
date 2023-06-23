@@ -2,7 +2,7 @@
 class working_info extends connect
 {
     private $queryPost = 'INSERT INTO working_info(id,id_staff,years_exp,months_exp, id_work_reference,id_personal_ref,start_contract,end_contract) VALUES(:identificacion,:idstaff,:yearsexp,:monthsexp, :idworkreference,:idpersonal,:startcontract,:endcontract)';
-    private $queryGetAll = 'SELECT * FROM working_info';
+    private $queryGetAll = 'SELECT working_info.id, staff.name AS staff_name, work_reference.name AS work_reference_name, personal_ref.name AS personal_ref_name FROM working_info, INNER JOIN staff ON working_info.id_staff = staff.id INNER JOIN work_reference ON working_info.id_work_reference = work_reference.id INNER JOIN personal_ref ON working_info.id_personal_reference = personal_ref.id  WHERE working_info.id=:identification ';
     private $queryUpdate = 'UPDATE working_info SET id = :identificacion, id_staff = :idstaff, years_exp = :yearsexp, months_exp = :monthsexp, id_work_reference = :idworkreference, id_personal_ref = :idpersonal, start_contract = :startcontract, end_contract = :endcontract WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM working_info WHERE id = :identificacion';
     private $message;

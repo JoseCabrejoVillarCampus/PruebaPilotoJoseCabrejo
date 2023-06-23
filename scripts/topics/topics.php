@@ -2,7 +2,7 @@
 class topics extends connect
 {
     private $queryPost = 'INSERT INTO topics(id,id_module,name_topic,start_date,end_date,description,duration_days) VALUES(:identificacion,:idmodule,:nametopic,:startdate,:enddate,:descript,:days)';
-    private $queryGetAll = 'SELECT * FROM topics';
+    private $queryGetAll = 'SELECT topics.id, modules.name AS modules_name,  FROM topics, INNER JOIN moduless ON topics.id_module = modules.id  WHERE topics.id=:identification ';
     private $queryUpdate = 'UPDATE topics SET id = :identificacion, id_module = :idmodule, name_topic = :nametopic, start_date = :startdate, end_date = :enddate, description = :descript, duration_days = :days WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM topics WHERE id = :identificacion';
     private $message;

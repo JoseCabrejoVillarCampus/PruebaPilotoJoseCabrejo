@@ -2,7 +2,7 @@
 class design_area extends connect
 {
     private $queryPost = 'INSERT INTO design_area(id,id_area,id_staff,id_position,id_journey) VALUES(:identificacion,:idarea,:idstaff,:idposicion,:idjpurneys)';
-    private $queryGetAll = 'SELECT design_area.id, areas.name AS areas_name, staff.name AS staff_name, position.name AS position_name, journeys.name AS journeys_name, INNER JOIN areas ON design_area.id_area = area.id INNER JOIN staff ON design_area.id_staff = satff.id INNER JOIN position ON design_area.id_position = position.id INNER JOIN journeys ON design_area.id_journey = journey.id  WHERE design_area.id=:identification ';
+    private $queryGetAll = 'SELECT design_area.id, areas.name AS areas_name, staff.name AS staff_name, position.name AS position_name, journeys.name AS journeys_name FROM design_area, INNER JOIN areas ON design_area.id_area = areas.id INNER JOIN staff ON design_area.id_staff = staff.id INNER JOIN position ON design_area.id_position = position.id INNER JOIN journeys ON design_area.id_journey = journeys.id  WHERE design_area.id=:identification ';
     private $queryUpdate = 'UPDATE design_area SET id = :identificacion, id_area = :idarea, id_staff = :idstaff, id_position = :idposicion, id_journey = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM design_area WHERE id = :identificacion';
     private $message;

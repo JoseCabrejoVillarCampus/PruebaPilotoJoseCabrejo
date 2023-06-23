@@ -2,7 +2,7 @@
 class regions extends connect
 {
     private $queryPost = 'INSERT INTO regions(id,name_region,id_country) VALUES(:identificacion,:namereg,:country)';
-    private $queryGetAll = 'SELECT * FROM regions';
+    private $queryGetAll = 'SELECT regions.id, countries.name AS countries_name FROM regions, INNER JOIN countries ON regions.id_countries = countries.id  WHERE regions.id=:identification ';
     private $queryUpdate = 'UPDATE regions SET id = :identificacion, name_region = :namereg, id_country = :country  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM regions WHERE id = :identificacion';
     private $message;

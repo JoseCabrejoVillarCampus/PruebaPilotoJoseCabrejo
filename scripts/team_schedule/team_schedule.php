@@ -2,7 +2,7 @@
 class team_schedule extends connect
 {
     private $queryPost = 'INSERT INTO team_schedule(id,team_name,check_in_skills,check_out_skills,check_in_soft,check_out_soft,check_in_english,check_out_english,check_in_review,check_out_review,id_journey) VALUES(:identificacion,:teamname,:checkinskills,:checkoutskills,:checkinsoft,:checkoutsoft,:checkinemglish,:checkoutenglish,:checkinreview,:checkoutreview,:idjpurneys)';
-    private $queryGetAll = 'SELECT * FROM team_schedule';
+    private $queryGetAll = 'SELECT team_schedule.id, journeys.name AS journeys_name,  FROM team_schedule, INNER JOIN journeys ON team_schedule.id_journey = journeys.id  WHERE team_schedule.id=:identification ';
     private $queryUpdate = 'UPDATE team_schedule SET id = :identificacion, team_name = :teamname, check_in_skills = :checkinskills, check_out_skills = :checkoutskills, check_in_soft = :checkinsoft, check_out_soft = :checkoutsoft, check_in_english = :checkinemglish, check_out_english = :checkoutenglish, check_in_review = :checkinreview, check_out_review = :checkoutreview, id_journey = :idjpurneys  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM team_schedule WHERE id = :identificacion';
     private $message;

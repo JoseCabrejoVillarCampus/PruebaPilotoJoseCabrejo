@@ -2,7 +2,7 @@
 class teachers extends connect
 {
     private $queryPost = 'INSERT INTO teachers(id,id_staff,id_route,id_academic_area,id_position,id_team_educator) VALUES(:identificacion,:idstaff,:idroute,:idacademicarea,:posicion,:teameducator)';
-    private $queryGetAll = 'SELECT * FROM teachers';
+    private $queryGetAll = 'SELECT teachers.id, staff.name AS staff_name, routes.name AS routes_name, academic_area.name AS academic_area_name, position.name AS position_name, team_educators.name AS team_educators_name FROM teachers, INNER JOIN staff ON teachers.id_staff = staff.id INNER JOIN routes ON teachers.id_route = route.id INNER JOIN academic_area ON teachers.id_academic_area = acedemic_area.id INNER JOIN position ON teachers.id_position = position.id INNER JOIN team_educators ON soft_skills.id_team_educator = team_educator.id WHERE teachers.id=:identification ';
     private $queryUpdate = 'UPDATE teachers SET id = :identificacion, id_staff = :idstaff, id_route = :idroute, id_academic_area = :idacademicarea, id_position = :posicion, id_team_educator = :teameducator  WHERE id = :identificacion';
     private $queryDelete = 'DELETE FROM teachers WHERE id = :identificacion';
     private $message;
