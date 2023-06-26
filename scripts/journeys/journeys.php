@@ -1,10 +1,10 @@
 <?php
-class journey extends connect
+class journeys extends connect
 {
-    private $queryPost = 'INSERT INTO journey(id,name_journey,check_in,check_out) VALUES(:identificacion,:name,:checkin,:checkout)';
-    private $queryGetAll = 'SELECT * FROM journey';
-    private $queryUpdate = 'UPDATE journey SET id = :identificacion, name_journey = :name, check_in = :checkin, check_out = :checkout  WHERE id = :identificacion';
-    private $queryDelete = 'DELETE FROM journey WHERE id = :identificacion';
+    private $queryPost = 'INSERT INTO journeys(id,name_journey,check_in,check_out) VALUES(:identificacion,:name,:checkin,:checkout)';
+    private $queryGetAll = 'SELECT * FROM journeys';
+    private $queryUpdate = 'UPDATE journeys SET id = :identificacion, name_journey = :name, check_in = :checkin, check_out = :checkout  WHERE id = :identificacion';
+    private $queryDelete = 'DELETE FROM journeys WHERE id = :identificacion';
     private $message;
     use getInstance;
     function __construct(private $id=1, public $name_journey=1, private $check_in=1, private $check_out=1)
@@ -36,7 +36,7 @@ class journey extends connect
             $res->bindValue("name", 1);
             $res->bindValue("checkin", 1);
             $res->bindValue("checkout", 1);
-            $this->message = ["Code" => 200, "Message" => $res->fetchAll(PDO::FETCH_ASSOC)];
+            $this->message = ["Code" => 200, "Message" => $res->fetchAll(\PDO::FETCH_ASSOC)];
         } catch (\PDOException $e) {
             $this->message = ["Code" => $e->getCode(), "Message" => $res->errorInfo()[2]];
         } finally {
